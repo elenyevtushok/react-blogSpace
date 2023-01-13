@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-import './App.css'
+import Navbar from './Navbar';
+import Home from './Home';
 
 function App() {
 	const [posts, setPosts] = useState([]);
@@ -43,9 +44,9 @@ function App() {
 
 	return (
 		<div className='App'>
-			<nav>
-				<h3>BlogSpace</h3>
-			</nav>
+			<Navbar />
+			<div className='content'>
+			<Home />
 			<form>
 				<label htmlFor="post-title">Title:</label>
 				<input
@@ -73,6 +74,7 @@ function App() {
 					</div>
 				)
 			})}
+			</div>
 		</div>
 	)
 }
