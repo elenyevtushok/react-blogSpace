@@ -3,7 +3,6 @@ import Navbar from './Navbar';
 import Home from './Home';
 
 function App() {
-	const [posts, setPosts] = useState([]);
 	const [newPost, setNewPost] = useState({ title: "", body: "" })
 
 	function handleChange(event) {
@@ -33,20 +32,10 @@ function App() {
 			})
 	}
 
-	function fetchPosts() {
-		fetch("https://apis.scrimba.com/jsonplaceholder/posts")
-			.then(res => res.json())
-			.then(data => setPosts(data))
-	}
-	useEffect(() => {
-		fetchPosts()
-	}, [])
-
 	return (
 		<div className='App'>
 			<Navbar />
 			<div className='content'>
-			<Home />
 			<form>
 				<label htmlFor="post-title">Title:</label>
 				<input
@@ -65,15 +54,7 @@ function App() {
 				/>
 				<button onClick ={handleClick}>Post</button>
 			</form>
-			{posts.map(post => {
-				return (
-					<div key = {post.title} id="blog-list">
-						<h4>Title:{post.title}</h4>
-						<p>Post:{post.body}</p>
-						<hr />
-					</div>
-				)
-			})}
+			<Home />
 			</div>
 		</div>
 	)
